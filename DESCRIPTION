@@ -1,11 +1,15 @@
 Package: easyGGIR
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Functions for Analysis of GGIR Output
+Version: 0.0.0.9000
+Author: person(given = "Amy R", family = "Hodgson", email = "amyhodgson777@gmail.com", role = c("aut", "cre"))
+Description: Just a couple of functions to make it easier to analyse the output from GGIR
+License: GNU General Public License v3.0
 Encoding: UTF-8
 LazyData: true
+Imports:
+    dplyr (>= 0.8.3)
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
