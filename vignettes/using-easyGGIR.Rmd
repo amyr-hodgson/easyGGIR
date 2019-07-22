@@ -39,19 +39,23 @@ This function takes the 'summary' parts of the GGIR output and combines them. It
 In this example, the folder is named 'Output' and we are interested in the data produced in the part 5 summary.
 
 ```{r, eval=FALSE}
-combine_summary(filepath = "Output", part = 5)
-# image of combined output
+mydata <- combine_summary(filepath = "Output", part = 5)
+```
+```{r, echo=FALSE}
+include_graphics("summary_result.PNG")
 ```
 
-You can then save the result of this as a variable, e.g. `mydata <- combine_summary(...)` and then conduct your analysis in R. Alternatively you can make a new csv file with the output, e.g. `write.csv(mydata, file = "mydata.csv")`.
+You can then conduct your analysis in R. Alternatively you can make a new csv file with the output, e.g. `write.csv(mydata, file = "mydata.csv")`.
 
 ### `combine_daily`
 
 This function works in exactly the same way as `combine_summary`, but works for the daily output parts- i.e. part2_daysummary, part4_nightsummary and part5_daysummary.
 
 ```{r, eval=FALSE}
-combine_daily()
-# image of output
+mydata <- combine_daily(filepath = "Output", part = 5)
+```
+```{r, echo=FALSE}
+include_graphics("daily_result.PNG")
 ```
 
 
