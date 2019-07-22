@@ -8,20 +8,25 @@
 #' @example part4 <- get_summary_parts(filepath = "Output", part = 4)
 
 
-get_summary_parts <- function(filepath, part) {
+combine_summary <- function(filepath, part) {
 
-  if (2 %in% part) {
-    data <- list.files(path = filepath, pattern = "part2_s", recursive = T, full.names = T)
+  if (2 %in% part) { # This part lists the files according to the number selected
+    data <- list.files(path = filepath,
+                       pattern = "part2_s",
+                       recursive = T, full.names = T)
   } else if (4 %in% part) {
-    data <- list.files(path = filepath, pattern = "part4_summary_sleep_c", recursive = T, full.names = T)
+    data <- list.files(path = filepath,
+                       pattern = "part4_summary_sleep_c",
+                       recursive = T, full.names = T)
   } else if (5 %in% part) {
-    data <- list.files(path = filepath, pattern = "part5_p", recursive = T, full.names = T)
+    data <- list.files(path = filepath,
+                       pattern = "part5_p",
+                       recursive = T, full.names = T)
   } else {
     print("Please supply a filepath to your data and part number, e.g. filepath = 'Data', part = 5")
   }
-  read_files <- lapply(data, readr::read_csv)
-  bind_files <- dplyr::bind_rows(read_files)
-  out <- bind_files
-  return(out)
+  read_files <- lapply(data, readr::read_csv) # The listed files are then read with read_csv()
+  bind_files <- dplyr::bind_rows(read_files) # The files are combined into a single dataset
+  return(bind_files) # Return object
 
 }
