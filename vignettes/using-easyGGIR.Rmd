@@ -61,4 +61,4 @@ include_graphics("daily_result.PNG")
 
 ### Why is there no option to create a single dataset with all output parts?
 
-Due to the high number of variables produced in the output (~500 in total, if all parts are combined), and inconsistencies between different parts of the output, I decided to combine different output parts seperately. However, if you want a single dataset, the `dplyr` package has tools to do this fairly easily. 
+Due to the high number of variables produced in the output (~500 in total, if all parts are combined), and inconsistencies between different parts of the output, I decided to combine different output parts seperately. However, if you want a single dataset, the `dplyr` package has tools to do this fairly easily, i.e. `full_join()`. See the dplyr cheat sheet for more information.
