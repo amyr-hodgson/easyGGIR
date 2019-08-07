@@ -23,20 +23,20 @@ install_github("amyr-hodgson/easyGGIR")
 
 ## `combine_summary` and `combine_daily`
 
-When you have run analysis of your actigraphy data using GGIR, you end up with a folder for each participant, containing several csv files full of data, as shown below. 
+These functions are designed for the situation where you have multiple sets of output from GGIR, and want to combine them into a single dataset. When you have run analysis of your actigraphy data using GGIR, you end up with a folder containing several csv files full of data, as shown below. 
 
 ```{r, echo=FALSE}
 library(knitr)
 include_graphics("output_files.PNG")
 ```
 
-However, most people want data from all particpants in one dataset. These functions are designed to save time by creating a single dataset for each output part (i.e. part 2, 4, and 5) containing data from all participants. 
+You may be in a position where you have many of these folders, and want to combine GGIR output without having to search through different output folders to find the right files to combine. These functions are designed to save time by creating a single dataset for each output part (i.e. part 2, 4, and 5) containing data from all participants. 
 
 ### `combine_summary`
 
-This function takes the 'summary' parts of the GGIR output and combines them. It takes two arguments: the filepath to the folder containing all of your output, and the part of the output you want (2, 4, or 5). I recommend having all your output from all participants in a single folder, and setting your working directory to the directory containing this folder. 
+This function takes the 'summary' parts of the GGIR output and combines them. It takes two arguments: the filepath to the folder containing all of your output, and the part of the output you want (2, 4, or 5). I recommend having all your output folders containing data you want to combine in a single folder, and setting your working directory to the directory containing this folder. 
 
-In this example, the folder is named 'Output' and we are interested in the data produced in the part 5 summary.
+In this example, the folder containing the data we are interested in is named 'Output' and we are interested in the data produced in the part 5 summary.
 
 ```{r, eval=FALSE}
 mydata <- combine_summary(filepath = "Output", part = 5)
