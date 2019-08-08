@@ -1,0 +1,64 @@
+---
+title: "Using easyGGIR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using easyGGIR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Installing easyGGIR
+
+To install a package from github, first make sure the `devtools` package is installed and loaded. 
+
+```{r package_install, eval=FALSE}
+library(devtools)
+```
+
+Then you can use the `install_github` function to install the package.
+
+```{r, eval=F}
+install_github("amyr-hodgson/easyGGIR")
+```
+
+## `combine_summary` and `combine_daily`
+
+These functions are designed for the situation where you have multiple sets of output from GGIR, and want to combine them into a single dataset. When you have run analysis of your actigraphy data using GGIR, you end up with a folder containing several csv files full of data, as shown below. 
+
+```{r, echo=FALSE}
+library(knitr)
+include_graphics("output_files.PNG")
+```
+
+You may be in a position where you have many of these folders, and want to combine GGIR output without having to search through different output folders to find the right files to combine. These functions are designed to save time by creating a single dataset for each output part (i.e. part 2, 4, and 5) containing data from all participants. 
+
+### `combine_summary`
+
+This function takes the 'summary' parts of the GGIR output and combines them. It takes two arguments: the filepath to the folder containing all of your output, and the part of the output you want (2, 4, or 5). I recommend having all your output folders containing data you want to combine in a single folder, and setting your working directory to the directory containing this folder. 
+
+In this example, the folder containing the data we are interested in is named 'Output' and we are interested in the data produced in the part 5 summary.
+
+```{r, eval=FALSE}
+mydata <- combine_summary(filepath = "Output", part = 5)
+```
+```{r, echo=FALSE}
+include_graphics("summary_result.PNG")
+```
+
+You can then conduct your analysis in R. Alternatively you can make a new csv file with the output, e.g. `write.csv(mydata, file = "mydata.csv")`.
+
+### `combine_daily`
+
+This function works in exactly the same way as `combine_summary`, but works for the daily output parts- i.e. part2_daysummary, part4_nightsummary and part5_daysummary.
+
+```{r, eval=FALSE}
+mydata <- combine_daily(filepath = "Output", part = 5)
+```
+```{r, echo=FALSE}
+include_graphics("daily_result.PNG")
+```
+
+
+### Why is there no option to create a single dataset with all output parts?
+
+Due to the high number of variables produced in the output (~500 in total, if all parts are combined), and inconsistencies between different parts of the output, I decided to combine different output parts seperately. However, if you want a single dataset, the `dplyr` package has tools to do this fairly easily, i.e. `full_join()`. See the dplyr cheat sheet for more information.
