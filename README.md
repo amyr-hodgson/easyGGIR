@@ -11,5 +11,10 @@ library(devtools)
 Then you can use the `install_github` function to install the package.
 
 ```{r}
-install_github("amyr-hodgson/easyGGIR")
+install_github("amyr-hodgson/easyGGIR", build_vignettes = TRUE)
+```
+To see the vignette:
+
+```{r}
+browseVignettes("easyGGIR")
 ```
