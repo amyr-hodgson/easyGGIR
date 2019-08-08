@@ -7,20 +7,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-## Installing easyGGIR
-
-To install a package from github, first make sure the `devtools` package is installed and loaded. 
-
-```{r package_install, eval=FALSE}
-library(devtools)
-```
-
-Then you can use the `install_github` function to install the package.
-
-```{r, eval=F}
-install_github("amyr-hodgson/easyGGIR")
-```
-
 ## `combine_summary` and `combine_daily`
 
 These functions are designed for the situation where you have multiple sets of output from GGIR, and want to combine them into a single dataset. When you have run analysis of your actigraphy data using GGIR, you end up with a folder containing several csv files full of data, as shown below. 
