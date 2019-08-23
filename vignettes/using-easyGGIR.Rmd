@@ -45,6 +45,23 @@ include_graphics("daily_result.PNG")
 ```
 
 
-### Why is there no option to create a single dataset with all output parts?
+## `all_summary` and `all_daily`
 
-Due to the high number of variables produced in the output (~500 in total, if all parts are combined), and inconsistencies between different parts of the output, I decided to combine different output parts seperately. However, if you want a single dataset, the `dplyr` package has tools to do this fairly easily, i.e. `full_join()`. See the dplyr cheat sheet for more information.
+These functions are designed for when you have a single set of output from GGIR (i.e. 3 daily and 3 summary .csv files) and want to combine them so that you have just one dataset for summary values, and one for daily values.
+
+`all_summary` takes one argument, which is the filepath to the GGIR output folders containing the data you want to combine. It combines part2_summary, part4_summary_sleep_cleaned, and part5_personsummary by ID, after fixing inconsistencies between the output parts.
+
+```{r, eval = FALSE}
+summary_data <- all_summary(filepath = "Study_Results/output_2019_test")
+```
+
+
+`all_daily` works in the same way, but for part2_daysummary, part4_nightsummary_sleep_cleaned, and part5_daysummary. It matches datasets by both ID and measurement day.
+
+
+```{r, eval=FALSE}
+daily_data <- all_daily(filepath = "Study_Results/output_2019_test")
+```
+
+
+**NB** These functions rely on the names of the output parts being in their standard form. If you have changed the names of the output files, they will probably not work.

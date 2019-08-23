@@ -18,3 +18,4 @@ To see the vignette:
 ```{r}
 browseVignettes("easyGGIR")
 ```
+Please check that your data look as expected after using these functions, as they have not been tested by anyone other than myself.
